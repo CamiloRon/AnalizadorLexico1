@@ -62,7 +62,7 @@ Public Class AnalizadorLexico
 
 
         Next
-
+        Return lista
     End Function
 
     Private Sub addToken(ByVal tipo As Tipo)
