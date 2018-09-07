@@ -16,9 +16,6 @@ Public Class AnalizadorLexico
 
             If Char.IsLetter(c) Then
                 auxLex += c
-                addToken(Tipo.IDENTIFICADOR)
-
-
 
             ElseIf Char.IsDigit(c) Then
                 auxLex += c

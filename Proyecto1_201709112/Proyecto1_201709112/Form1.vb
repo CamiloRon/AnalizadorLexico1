@@ -64,7 +64,6 @@
     Private Sub AnalizarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AnalizarToolStripMenuItem.Click
         Dim entrada As String = Me.RichTextBox1.Text
 
-        'Proceso de análisis léxico
         Dim lex As AnalizadorLexico = New AnalizadorLexico()
         Dim lTokens As List(Of Token) = lex.escanear(entrada)
         lex.imprimirLista(lTokens)
