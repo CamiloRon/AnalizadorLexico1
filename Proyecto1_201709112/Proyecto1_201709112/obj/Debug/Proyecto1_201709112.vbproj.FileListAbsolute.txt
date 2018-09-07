@@ -22,3 +22,15 @@ C:\Users\Josh\Documents\GitHub\AnalizadorLexico1\Proyecto1_201709112\Proyecto1_2
 C:\Users\Josh\Documents\GitHub\AnalizadorLexico1\Proyecto1_201709112\Proyecto1_201709112\obj\Debug\Proyecto1_201709112.exe
 C:\Users\Josh\Documents\GitHub\AnalizadorLexico1\Proyecto1_201709112\Proyecto1_201709112\obj\Debug\Proyecto1_201709112.xml
 C:\Users\Josh\Documents\GitHub\AnalizadorLexico1\Proyecto1_201709112\Proyecto1_201709112\obj\Debug\Proyecto1_201709112.pdb
+C:\Users\Camilo Roncal\Documents\GitHub\AnalizadorLexico1\Proyecto1_201709112\Proyecto1_201709112\bin\Debug\Proyecto1_201709112.exe.config
+C:\Users\Camilo Roncal\Documents\GitHub\AnalizadorLexico1\Proyecto1_201709112\Proyecto1_201709112\bin\Debug\Proyecto1_201709112.exe
+C:\Users\Camilo Roncal\Documents\GitHub\AnalizadorLexico1\Proyecto1_201709112\Proyecto1_201709112\bin\Debug\Proyecto1_201709112.pdb
+C:\Users\Camilo Roncal\Documents\GitHub\AnalizadorLexico1\Proyecto1_201709112\Proyecto1_201709112\bin\Debug\Proyecto1_201709112.xml
+C:\Users\Camilo Roncal\Documents\GitHub\AnalizadorLexico1\Proyecto1_201709112\Proyecto1_201709112\obj\Debug\Proyecto1_201709112.vbprojAssemblyReference.cache
+C:\Users\Camilo Roncal\Documents\GitHub\AnalizadorLexico1\Proyecto1_201709112\Proyecto1_201709112\obj\Debug\Proyecto1_201709112.Form1.resources
+C:\Users\Camilo Roncal\Documents\GitHub\AnalizadorLexico1\Proyecto1_201709112\Proyecto1_201709112\obj\Debug\Proyecto1_201709112.Resources.resources
+C:\Users\Camilo Roncal\Documents\GitHub\AnalizadorLexico1\Proyecto1_201709112\Proyecto1_201709112\obj\Debug\Proyecto1_201709112.vbproj.GenerateResource.cache
+C:\Users\Camilo Roncal\Documents\GitHub\AnalizadorLexico1\Proyecto1_201709112\Proyecto1_201709112\obj\Debug\Proyecto1_201709112.vbproj.CoreCompileInputs.cache
+C:\Users\Camilo Roncal\Documents\GitHub\AnalizadorLexico1\Proyecto1_201709112\Proyecto1_201709112\obj\Debug\Proyecto1_201709112.exe
+C:\Users\Camilo Roncal\Documents\GitHub\AnalizadorLexico1\Proyecto1_201709112\Proyecto1_201709112\obj\Debug\Proyecto1_201709112.xml
+C:\Users\Camilo Roncal\Documents\GitHub\AnalizadorLexico1\Proyecto1_201709112\Proyecto1_201709112\obj\Debug\Proyecto1_201709112.pdb
