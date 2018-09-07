@@ -51,6 +51,7 @@ Public Class AnalizadorLexico
                 addToken(Tipo.SIGNO_NUMERAL)
             ElseIf (Char.IsSymbol(c) Or c = " ") Then
                 addToken(Tipo.LETRA)
+                i -= 1
             Else
                 If (c = "~" And i = entrada.Length() - 1) Then
                     Console.WriteLine("Hemos concluido el análisis léxico satisfactoriamente")
