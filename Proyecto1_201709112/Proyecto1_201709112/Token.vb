@@ -13,6 +13,7 @@
         LLAVE_IZQ
         LLAVE_DER
         PALABRA_RESERVADA
+        TIPO_ERROR
     End Enum
     Private tipoToken As Tipo
     Private valor As String

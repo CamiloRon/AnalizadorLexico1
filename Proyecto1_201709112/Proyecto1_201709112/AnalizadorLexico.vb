@@ -1,10 +1,11 @@
 ﻿Imports Proyecto1_201709112.Token
 Public Class AnalizadorLexico
     Private lista As List(Of Token)
+    Private errores As List(Of Token)
     Private estado As Integer
     Private auxLex As String
     Private entrada As String
-    Private i As Integer
+    Private i, fila As Integer
     Private c As Char
     Private lineas() As String
 
@@ -13,6 +14,7 @@ Public Class AnalizadorLexico
         Console.WriteLine(lineas.Length)
         lista = New List(Of Token)
         For Each texto As String In lineas
+            fila += 1
             For i = 0 To texto.Length - 1
                 c = texto.Chars(i)
                 Select Case estado
@@ -40,8 +42,9 @@ Public Class AnalizadorLexico
         ElseIf (c = "#" Or c = "[" Or c = "]" Or c = "{" Or c = "}" Or c = ";" Or c = "+" Or c = "-" Or c = ":") Then
             estado = 2
             auxLex += c
-        ElseIf ((c & entrada.Chars(i)) = "\n") Then
-            Console.WriteLine(entrada.Chars(i + 1).GetTypeCode())
+        ElseIf (c <> " ") Then
+            auxLex += c
+            tokenError(Token.Tipo.TIPO_ERROR)
         End If
     End Sub
 
@@ -51,6 +54,10 @@ Public Class AnalizadorLexico
 
     Private Sub estado2(ByVal c As Char)
 
+    End Sub
+
+    Private Sub tokenError(ByVal tipo As Tipo)
+        errores.Add(New Token(tipo, auxLex))
     End Sub
 
     Private Sub addToken(ByVal tipo As Tipo)
