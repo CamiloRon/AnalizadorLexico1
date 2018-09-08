@@ -130,7 +130,7 @@ Public Class Form1
     End Sub
 
     Private Sub AcercaDeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AcercaDeToolStripMenuItem.Click
-        Dim texto As String = "Nombre: Camilo Enrique Roncal Pineda\nCarné: 201709112\nLenguaje formales y de programación\nSección: C+"
-        MessageBox.Show(texto, "Acerca de:", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        Dim texto As String = "Nombre: Camilo Enrique Roncal Pineda" + "\r" + "Carné: 201709112/tLenguaje formales y de programación/rSección: C+"
+        MessageBox.Show(texto, "Acerca de:", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 End Class
