@@ -63,10 +63,20 @@
 
     Private Sub AnalizarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AnalizarToolStripMenuItem.Click
         Dim entrada As String = Me.RichTextBox1.Text
-
-
         Dim lex As AnalizadorLexico = New AnalizadorLexico()
         Dim lTokens As List(Of Token) = lex.escanear(Me.RichTextBox1.Lines)
-        lex.imprimirLista(lTokens)
+        If (lTokens.First.getTipo() = Token.Tipo.TIPO_ERROR) Then
+            ImprimirErrores()
+        Else
+            ImprimirTokens()
+        End If
+    End Sub
+
+    Private Sub ImprimirErrores()
+
+    End Sub
+
+    Private Sub ImprimirTokens()
+
     End Sub
 End Class

@@ -11,8 +11,8 @@ Public Class AnalizadorLexico
 
     Public Function escanear(ByVal entrada As String()) As List(Of Token)
         Me.lineas = entrada
-        Console.WriteLine(lineas.Length)
         lista = New List(Of Token)
+        errores = New List(Of Token)
         For Each texto As String In lineas
             fila += 1
             For i = 0 To texto.Length - 1
@@ -26,7 +26,11 @@ Public Class AnalizadorLexico
             Next
             auxLex = ""
         Next
-        Return lista
+        If (errores.Count > 0) Then
+            Return errores
+        Else
+            Return lista
+        End If
     End Function
 
     Private Sub estado0(ByVal c As Char)
