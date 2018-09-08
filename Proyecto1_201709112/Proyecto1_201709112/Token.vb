@@ -34,7 +34,7 @@
             Case Tipo.NUMERO_ENTERO
                 Return "NumeroEntero "
             Case Tipo.PALABRA
-                Return "Letra"
+                Return "Palabra"
             Case Tipo.SIGNO_IGUAL
                 Return "Signoigual"
             Case Tipo.SIGNO_MAS
@@ -55,6 +55,8 @@
                 Return "LlaveDer"
             Case Tipo.PALABRA_RESERVADA
                 Return "PalabraReservada"
+            Case Tipo.SIGNO_NUMERAL
+                Return "Numeral"
             Case Else
                 Return "Desconocido  "
         End Select
