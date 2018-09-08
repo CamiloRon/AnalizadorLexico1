@@ -8,6 +8,7 @@ Public Class AnalizadorLexico
     Private i, fila, columna As Integer
     Private c As Char
     Private lineas() As String
+    Private palabrasClave As String = New String("clase", "nombre")
 
     Public Function escanear(ByVal entrada As String()) As List(Of Token)
         Me.lineas = entrada
@@ -55,6 +56,7 @@ Public Class AnalizadorLexico
         If (Char.IsLetterOrDigit(c)) Then
             auxLex += c
         Else
+
             addToken(Token.Tipo.PALABRA)
             i -= 1
         End If
