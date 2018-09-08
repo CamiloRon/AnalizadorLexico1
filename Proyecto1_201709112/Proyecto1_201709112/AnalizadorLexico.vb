@@ -26,6 +26,11 @@ Public Class AnalizadorLexico
             Next
             auxLex = ""
         Next
+
+        If estado = 1 Then
+            addToken(Token.Tipo.PALABRA)
+        End If
+
         If (errores.Count > 0) Then
             Return errores
         Else
