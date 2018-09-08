@@ -29,7 +29,17 @@ Public Class AnalizadorLexico
         Next
 
         If estado = 1 Then
-            addToken(Token.Tipo.PALABRA)
+            Dim reservada As Boolean = False
+            For Each texto As String In palabrasClave
+                If auxLex.ToLower().Equals(texto) Then
+                    reservada = True
+                End If
+            Next
+            If reservada Then
+                addToken(Token.Tipo.PALABRA_RESERVADA)
+            Else
+                addToken(Token.Tipo.PALABRA)
+            End If
         End If
 
         If (errores.Count > 0) Then
@@ -59,10 +69,14 @@ Public Class AnalizadorLexico
             Dim reservada As Boolean = False
             For Each texto As String In palabrasClave
                 If auxLex.ToLower().Equals(texto) Then
-
+                    reservada = True
                 End If
             Next
-            addToken(Token.Tipo.PALABRA)
+            If reservada Then
+                addToken(Token.Tipo.PALABRA_RESERVADA)
+            Else
+                addToken(Token.Tipo.PALABRA)
+            End If
             i -= 1
         End If
     End Sub
