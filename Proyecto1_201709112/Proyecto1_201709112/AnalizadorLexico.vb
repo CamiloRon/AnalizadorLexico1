@@ -5,7 +5,7 @@ Public Class AnalizadorLexico
     Private estado As Integer
     Private auxLex As String
     Private entrada As String
-    Private i, fila As Integer
+    Private i, fila, columna As Integer
     Private c As Char
     Private lineas() As String
 
@@ -22,8 +22,6 @@ Public Class AnalizadorLexico
                         estado0(c)
                     Case 1
                         estado1(c)
-                    Case 2
-                        estado2(c)
                 End Select
             Next
             auxLex = ""
@@ -31,15 +29,12 @@ Public Class AnalizadorLexico
         Return lista
     End Function
 
-    Public Function leerToken() As Char
-        c = entrada.Chars(i)
-    End Function
-
     Private Sub estado0(ByVal c As Char)
+        columna = i
         If (Char.IsLetterOrDigit(c)) Then
             estado = 1
             auxLex += c
-        ElseIf (c = "#" Or c = "[" Or c = "]" Or c = "{" Or c = "}" Or c = ";" Or c = "+" Or c = "-" Or c = ":") Then
+        ElseIf (c = "#" Or c = "[" Or c = "]" Or c = "{" Or c = "}" Or c = ";" Or c = "+" Or c = "-" Or c = ":" Or c = "=") Then
             estado2(c)
         ElseIf (c <> " ") Then
             auxLex += c
@@ -48,14 +43,21 @@ Public Class AnalizadorLexico
     End Sub
 
     Private Sub estado1(ByVal c As Char)
-
+        If (Char.IsLetterOrDigit(c)) Then
+            auxLex += c
+        Else
+            addToken(Token.Tipo.PALABRA)
+            i -= 1
+        End If
     End Sub
 
     Private Sub estado2(ByVal c As Char)
+
         Select Case c
             Case "#"
                 addToken(Tipo.SIGNO_NUMERAL)
         End Select
+
     End Sub
 
     Private Sub tokenError(ByVal tipo As Tipo)
@@ -63,7 +65,7 @@ Public Class AnalizadorLexico
     End Sub
 
     Private Sub addToken(ByVal tipo As Tipo)
-        lista.Add(New Token(tipo, auxLex, fila, i + 1))
+        lista.Add(New Token(tipo, auxLex, fila, columna + 1))
         auxLex = ""
         estado = 0
     End Sub
