@@ -3,6 +3,8 @@ Public Class Form1
     Dim rutaguardado As String
     Dim estado As Boolean = False
     Dim tokens As List(Of Token)
+    Dim analizado = False
+
     Private Sub GuardarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AbrirToolStripMenuItem.Click
         Dim OFD As New OpenFileDialog
         OFD.Filter = "txt|*.txt"
@@ -68,27 +70,44 @@ Public Class Form1
         Dim entrada As String = Me.RichTextBox1.Text
         Dim lex As AnalizadorLexico = New AnalizadorLexico()
         tokens = lex.escanear(Me.RichTextBox1.Lines)
-
+        analizado = True
     End Sub
 
     Private Sub ImprimirErrores()
-        Using archivo As IO.StreamWriter New System.IO.StreamWriter(folderBrowserDialog1.SelectedPath + "\\Reportes\\Errores.html")) {
-                    archivo.Write("<!DOCTYPE html> <html lang='en' > <head> <meta charset='UTF - 8'> <title>Errores</title> <link rel='stylesheet' href='css/style.css'> </head> <body> <meta name='viewport' content='initial - scale = 1.0; maximum - scale = 1.0; width = device - width; '>  <div class='table - title'> <h3 align = 'Center'>Errores lexicos</h3> </div> <table class='table - fill' align = 'Center'> <thead> <tr> <th class='text - left'>No.</th> <th class='text - left'>Error</th> <th class='text - left'>Descripción</th> <th class='text - left'>Fila</th> <th class='text - left'>Columna</th> </tr> </thead> <tbody class='table - hover'>");
-                    foreach(Token token In tokens) {
-                        Error error = (Error)token;
-                        archivo.Write("<tr> <td class='text - left'>" + error.getIDError() + "</td> <td class='text - left'> " + Error.getValor() + "</td> <td class='text - left'> " + Error.getTipo() + "</td> <td class='text - left'> " + Error.getFila() + "</td> <td class='text - left'> " + Error.getColumna() + "</td> </tr>");
-                    }
-                    archivo.Write("</tbody> </table> </body></html>");
-                    archivo.Flush();
-                    archivo.Close();
-                }
+        Using archivo As IO.StreamWriter = New System.IO.StreamWriter(FolderBrowserDialog1.SelectedPath + "\\Reportes\\Errores.html")
+            archivo.Write("<!DOCTYPE html> <html lang='en' > <head> <meta charset='UTF - 8'> <title>Errores</title> <link rel='stylesheet' href='css/style.css'> </head> <body> <meta name='viewport' content='initial - scale = 1.0; maximum - scale = 1.0; width = device - width; '>  <div class='table - title'> <h3 align = 'Center'>Errores lexicos</h3> </div> <table class='table - fill' align = 'Center'> <thead> <tr> <th class='text - left'>No.</th> <th class='text - left'>Error</th> <th class='text - left'>Descripción</th> <th class='text - left'>Fila</th> <th class='text - left'>Columna</th> </tr> </thead> <tbody class='table - hover'>")
+
+            Dim contador As Integer = 0
+            For Each token As Token In tokens
+                contador += 1
+                archivo.Write("<tr> <td class='text - left'>" + contador + "</td> <td class='text - left'> " + token.getValor() + "</td> <td class='text - left'> " + token.getTipoEnString() + "</td> <td class='text - left'> " + token.fila + "</td> <td class='text - left'> " + token.columna + "</td> </tr>")
+            Next
+            archivo.Write("</tbody> </table> </body></html>")
+            archivo.Flush()
+            archivo.Close()
+        End Using
     End Sub
 
     Private Sub ImprimirTokens()
 
+        Dim contador As Integer = 0
+        Using archivo As System.IO.StreamWriter = New System.IO.StreamWriter(FolderBrowserDialog1.SelectedPath + "\\Reportes\\Tokens.html")
+            archivo.Write("<!DOCTYPE html> <html lang='en' > <head> <meta charset='UTF - 8'> <link rel='stylesheet' href='css/style.css'> </head> <body> <meta name='viewport' content='initial - scale = 1.0; maximum - scale = 1.0; width = device - width; '>  <div class='table - title'> <h3 align = 'Center'>Tokens</h3> </div> <table class='table - fill' align = 'Center'> <thead> <tr> <th class='text - left'>No.</th> <th class='text - left'>Token</th> <th class='text - left'>Tipo</th> <th class='text - left'>Fila</th> <th class='text - left'>Columna</th> </tr> </thead> <tbody class='table - hover'>")
+            For Each token As Token In tokens
+                contador += 1
+                archivo.Write("<tr> <td class='text - left'>" + contador + "</td> <td class='text - left'> " + token.getValor() + "</td> <td class='text - left'> " + token.getTipoEnString + "</td> <td class='text - left'> " & token.fila & "</td> <td class='text - left'> " & token.columna & "</td> </tr>")
+            Next
+            archivo.Write("</tbody> </table> </body></html>")
+            archivo.Flush()
+            archivo.Close()
+        End Using
     End Sub
 
     Private Sub ReporteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReporteToolStripMenuItem.Click
+        If (analizado <> True) Then
+            MsgBox("No existen reportes aun para mostrar, ingrese un texto para analizarlo")
+            Return
+        End If
         FolderBrowserDialog1.ShowDialog()
         System.IO.Directory.CreateDirectory(FolderBrowserDialog1.SelectedPath + "\\Reportes\\CSS")
         Using archivo As IO.StreamWriter = New IO.StreamWriter(FolderBrowserDialog1.SelectedPath + "\\Reportes\\CSS\\style.css")
@@ -96,6 +115,7 @@ Public Class Form1
             archivo.Flush()
             archivo.Close()
         End Using
+        Console.WriteLine(tokens.Count)
         If (tokens.First.getTipo() = Token.Tipo.TIPO_ERROR) Then
             ImprimirErrores()
         Else
@@ -106,39 +126,6 @@ Public Class Form1
 
 
 
-        If (tokens.First().getTipo().Equals("Elemento léxico desconocido")) Then {
-                Using (System.IO.StreamWriter archivo = New System.IO.StreamWriter(folderBrowserDialog1.SelectedPath + "\\Reportes\\Errores.html")) {
-                    archivo.Write("<!DOCTYPE html> <html lang='en' > <head> <meta charset='UTF - 8'> <title>Errores</title> <link rel='stylesheet' href='css/style.css'> </head> <body> <meta name='viewport' content='initial - scale = 1.0; maximum - scale = 1.0; width = device - width; '>  <div class='table - title'> <h3 align = 'Center'>Errores lexicos</h3> </div> <table class='table - fill' align = 'Center'> <thead> <tr> <th class='text - left'>No.</th> <th class='text - left'>Error</th> <th class='text - left'>Descripción</th> <th class='text - left'>Fila</th> <th class='text - left'>Columna</th> </tr> </thead> <tbody class='table - hover'>");
-                    foreach(Token token In tokens) {
-                        Error error = (Error)token;
-                        archivo.Write("<tr> <td class='text - left'>" + error.getIDError() + "</td> <td class='text - left'> " + Error.getValor() + "</td> <td class='text - left'> " + Error.getTipo() + "</td> <td class='text - left'> " + Error.getFila() + "</td> <td class='text - left'> " + Error.getColumna() + "</td> </tr>");
-                    }
-                    archivo.Write("</tbody> </table> </body></html>");
-                    archivo.Flush();
-                    archivo.Close();
-                }
-            } else {
-                escribirColor();
-                crearBloques();
-                Using (System.IO.StreamWriter archivo = New System.IO.StreamWriter(folderBrowserDialog1.SelectedPath + "\\Reportes\\Tokens.html")) {
-                    archivo.Write("<!DOCTYPE html> <html lang='en' > <head> <meta charset='UTF - 8'> <link rel='stylesheet' href='css/style.css'> </head> <body> <meta name='viewport' content='initial - scale = 1.0; maximum - scale = 1.0; width = device - width; '>  <div class='table - title'> <h3 align = 'Center'>Tokens</h3> </div> <table class='table - fill' align = 'Center'> <thead> <tr> <th class='text - left'>No.</th> <th class='text - left'>Token</th> <th class='text - left'>Tipo</th> <th class='text - left'>Fila</th> <th class='text - left'>Columna</th> </tr> </thead> <tbody class='table - hover'>");
-                    foreach(Token token In tokens) {
-                        archivo.Write("<tr> <td class='text - left'>" + Token.getID() + "</td> <td class='text - left'> " + Token.getValor() + "</td> <td class='text - left'> " + Token.getTipo() + "</td> <td class='text - left'> " + Token.getFila() + "</td> <td class='text - left'> " + Token.getColumna() + "</td> </tr>");
-                    }
-                    archivo.Write("</tbody> </table> </body></html>");
-                    archivo.Flush();
-                    archivo.Close();
-                }
-                If (organigramas.Count > 0) Then{
-                    Using (System.IO.StreamWriter archivo = New System.IO.StreamWriter(folderBrowserDialog1.SelectedPath + "\\Reportes\\Organigramas.html")) {
-                        archivo.Write("<!DOCTYPE html> <html lang='en' > <head> <meta charset='UTF - 8'> <title>Organigramas</title> <link rel='stylesheet' href='css/style.css'> </head> <body><CENTER>");
-                        foreach(organigrama organigrama In organigramas) {
-                            archivo.Write("<h1>" + organigrama.nombre + "</h1><img src='" + FolderBrowserDialog1.SelectedPath + "\\Reportes\\" + organigrama.nombre + ".jpg'>");
-                        }
-                        archivo.Write("</CENTER></body></html>");
-                    }
-                }
-                
-            }
+
     End Sub
 End Class

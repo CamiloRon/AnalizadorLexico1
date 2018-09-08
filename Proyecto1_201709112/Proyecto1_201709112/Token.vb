@@ -16,7 +16,8 @@
         TIPO_ERROR
     End Enum
     Private tipoToken As Tipo
-    Private valor, fila, columna As String
+    Private valor As String
+    Public fila, columna As Integer
     Public Sub New(ByVal tipo As Tipo, ByVal auxLex As String, ByVal filas As Integer, ByVal columnas As Integer)
         Me.tipoToken = tipo
         Me.valor = auxLex

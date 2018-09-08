@@ -34,8 +34,7 @@
                                 If (lista(contador + 6).getValor().ToLower()) Then
                                 End If
                                 If (lista(contador + 1).getValor().Equals("}")) Then
-                                If (Bloqueatributo) Then
-                                    clases.Add(New Clase())
+
                                 End If
                             End If
                         End If
