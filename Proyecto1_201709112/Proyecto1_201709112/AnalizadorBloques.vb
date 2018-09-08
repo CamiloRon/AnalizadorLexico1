@@ -1,7 +1,8 @@
 ﻿Public Class AnalizadorBloques
 
-    Private contador As Integer
+    Private contador As Integer = 0
     Private lista() As Token
+    Private clases As List(Of Clase)
 
     Public Sub New(ByRef Tokens As List(Of Token))
         Dim lista() As Token = Tokens.ToArray()
@@ -12,17 +13,30 @@
 
     Private Sub AnalizarBloqueClase(ByRef lista As Token())
         Console.WriteLine(lista.Length)
-        Console.WriteLine(lista(0).getValor())
-        If (lista(0).getValor().Equals("[")) Then
-            Console.WriteLine("dfd")
-            If (lista(1).getValor().ToLower().Equals("clase")) Then
-                If (lista(2).getValor().Equals("]")) Then
-                    If (lista(3).getValor().Equals("{")) Then
-                        If (lista(4).getValor().Equals("[")) Then
-                            If (lista(5).getValor().ToLower().Equals("atributo")) Then
-                                AnalizarBloqueAtributo()
-                            ElseIf (lista(5).getValor().ToLower().Equals("metodo")) Then
-                                AnalizarBloqueMetodo()
+        Console.WriteLine(lista(contador).getValor())
+        If (lista(contador).getValor().Equals("[")) Then
+            If (lista(contador + 1).getValor().ToLower().Equals("clase")) Then
+                If (lista(contador + 2).getValor().Equals("]")) Then
+                    Dim Bloqueatributo = False
+                    If (lista(contador + 3).getValor().Equals("{")) Then
+                        If (lista(contador + 4).getValor().Equals("[")) Then
+                            Dim atributos As List(Of Atributo)
+                            Dim metodos As List(Of Metodo)
+                            Dim nombre As String
+                            If (lista(contador + 5).getValor().ToLower().Equals("atributo")) Then
+                                contador += 5
+                                atributos = AnalizarBloqueAtributo()
+                                Bloqueatributo = True
+                            ElseIf (lista(contador + 5).getValor().ToLower().Equals("metodo")) Then
+                                contador += 5
+                                metodos = AnalizarBloqueMetodo()
+                            ElseIf (lista(contador + 5).getValor().ToLower().Equals("nombre")) Then
+                                If (lista(contador + 6).getValor().ToLower()) Then
+                                End If
+                                If (lista(contador + 1).getValor().Equals("}")) Then
+                                If (Bloqueatributo) Then
+                                    clases.Add(New Clase())
+                                End If
                             End If
                         End If
                     End If
@@ -31,11 +45,11 @@
         End If
     End Sub
 
-    Private Sub AnalizarBloqueAtributo()
-        Console.WriteLine(lista.Count)
-    End Sub
+    Private Function AnalizarBloqueAtributo() As List(Of Atributo)
 
-    Private Sub AnalizarBloqueMetodo()
-        Console.WriteLine(lista.Count)
-    End Sub
+    End Function
+
+    Private Function AnalizarBloqueMetodo() As List(Of Metodo)
+
+    End Function
 End Class
