@@ -38,6 +38,7 @@ Partial Class Form1
         Me.AcercaDeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
+        Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -98,13 +99,13 @@ Partial Class Form1
         'ReporteToolStripMenuItem
         '
         Me.ReporteToolStripMenuItem.Name = "ReporteToolStripMenuItem"
-        Me.ReporteToolStripMenuItem.Size = New System.Drawing.Size(155, 26)
+        Me.ReporteToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
         Me.ReporteToolStripMenuItem.Text = "Reporte"
         '
         'DiagramarToolStripMenuItem
         '
         Me.DiagramarToolStripMenuItem.Name = "DiagramarToolStripMenuItem"
-        Me.DiagramarToolStripMenuItem.Size = New System.Drawing.Size(155, 26)
+        Me.DiagramarToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
         Me.DiagramarToolStripMenuItem.Text = "Diagramar"
         '
         'AyudaToolStripMenuItem
@@ -172,4 +173,5 @@ Partial Class Form1
     Friend WithEvents AcercaDeToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents RichTextBox1 As RichTextBox
+    Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
 End Class
