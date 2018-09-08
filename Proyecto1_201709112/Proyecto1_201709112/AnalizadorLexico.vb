@@ -55,6 +55,25 @@ Public Class AnalizadorLexico
         Select Case c
             Case "#"
                 addToken(Tipo.SIGNO_NUMERAL)
+            Case "["
+                addToken(Tipo.CORCHETE_IZQ)
+            Case "]"
+                addToken(Tipo.CORCHETE_DER)
+            Case "{"
+                addToken(Tipo.LLAVE_IZQ)
+            Case "}"
+                addToken(Tipo.LLAVE_DER)
+            Case ";"
+                addToken(Tipo.SIGNO_PUNTOYCOMA)
+            Case ":"
+                addToken(Tipo.SIGNO_DOSPUNTOS)
+            Case "+"
+                addToken(Tipo.SIGNO_MAS)
+            Case "-"
+                addToken(Tipo.SIGNO_MENOS)
+            Case "="
+                addToken(Tipo.SIGNO_IGUAL)
+
         End Select
     End Sub
 

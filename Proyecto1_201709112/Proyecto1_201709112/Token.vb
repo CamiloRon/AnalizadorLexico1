@@ -3,8 +3,8 @@
         PALABRA
         NUMERO_ENTERO
         SIGNO_IGUAL
-        SIGNO_MAYORQ
-        SIGNO_MENORQ
+        SIGNO_MAS
+        SIGNO_MENOS
         SIGNO_DOSPUNTOS
         SIGNO_PUNTOYCOMA
         SIGNO_NUMERAL
@@ -37,10 +37,10 @@
                 Return "Letra"
             Case Tipo.SIGNO_IGUAL
                 Return "Signoigual"
-            Case Tipo.SIGNO_MAYORQ
-                Return "MayorQ"
-            Case Tipo.SIGNO_MENORQ
-                Return "MenorQ"
+            Case Tipo.SIGNO_MAS
+                Return "Mas"
+            Case Tipo.SIGNO_MENOS
+                Return "Menos"
             Case Tipo.SIGNO_DOSPUNTOS
                 Return "DosPuntos"
             Case Tipo.SIGNO_PUNTOYCOMA
