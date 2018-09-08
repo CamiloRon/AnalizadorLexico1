@@ -22,8 +22,7 @@
                             If (lista(5).getValor().ToLower().Equals("atributo")) Then
                                 AnalizarBloqueAtributo()
                             ElseIf (lista(5).getValor().ToLower().Equals("metodo")) Then
-                                Console.WriteLine(lista.Count)
-                                AnalizarBloqueMetodo(lista.Skip(5))
+                                AnalizarBloqueMetodo()
                             End If
                         End If
                     End If
@@ -36,7 +35,7 @@
         Console.WriteLine(lista.Count)
     End Sub
 
-    Private Sub AnalizarBloqueMetodo(ByVal lista As Token())
+    Private Sub AnalizarBloqueMetodo()
         Console.WriteLine(lista.Count)
     End Sub
 End Class
