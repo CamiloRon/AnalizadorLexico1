@@ -80,12 +80,13 @@ Public Class Form1
             Dim contador As Integer = 0
             For Each token As Token In tokens
                 contador += 1
-                archivo.Write("<tr> <td class='text - left'>" + contador + "</td> <td class='text - left'> " + token.getValor() + "</td> <td class='text - left'> " + token.getTipoEnString() + "</td> <td class='text - left'> " + token.fila + "</td> <td class='text - left'> " + token.columna + "</td> </tr>")
+                archivo.Write("<tr> <td class='text - left'>" & contador & "</td> <td class='text - left'> " & token.getValor() & "</td> <td class='text - left'> " + token.getTipoEnString() + "</td> <td class='text - left'> " & token.fila & "</td> <td class='text - left'> " & token.columna & "</td> </tr>")
             Next
             archivo.Write("</tbody> </table> </body></html>")
             archivo.Flush()
             archivo.Close()
         End Using
+        Process.Start(FolderBrowserDialog1.SelectedPath + "\\Reportes\\Errores.html")
     End Sub
 
     Private Sub ImprimirTokens()
@@ -95,12 +96,13 @@ Public Class Form1
             archivo.Write("<!DOCTYPE html> <html lang='en' > <head> <meta charset='UTF - 8'> <link rel='stylesheet' href='css/style.css'> </head> <body> <meta name='viewport' content='initial - scale = 1.0; maximum - scale = 1.0; width = device - width; '>  <div class='table - title'> <h3 align = 'Center'>Tokens</h3> </div> <table class='table - fill' align = 'Center'> <thead> <tr> <th class='text - left'>No.</th> <th class='text - left'>Token</th> <th class='text - left'>Tipo</th> <th class='text - left'>Fila</th> <th class='text - left'>Columna</th> </tr> </thead> <tbody class='table - hover'>")
             For Each token As Token In tokens
                 contador += 1
-                archivo.Write("<tr> <td class='text - left'>" + contador + "</td> <td class='text - left'> " + token.getValor() + "</td> <td class='text - left'> " + token.getTipoEnString + "</td> <td class='text - left'> " & token.fila & "</td> <td class='text - left'> " & token.columna & "</td> </tr>")
+                archivo.Write("<tr> <td class='text - left'>" & contador & "</td> <td class='text - left'> " + token.getValor() + "</td> <td class='text - left'> " + token.getTipoEnString + "</td> <td class='text - left'> " & token.fila & "</td> <td class='text - left'> " & token.columna & "</td> </tr>")
             Next
             archivo.Write("</tbody> </table> </body></html>")
             archivo.Flush()
             archivo.Close()
         End Using
+        Process.Start(FolderBrowserDialog1.SelectedPath + "\\Reportes\\Tokens.html")
     End Sub
 
     Private Sub ReporteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReporteToolStripMenuItem.Click
@@ -130,7 +132,19 @@ Public Class Form1
     End Sub
 
     Private Sub AcercaDeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AcercaDeToolStripMenuItem.Click
+<<<<<<< HEAD
         Dim texto As String = "Nombre: Camilo Enrique Roncal Pineda   Carné: 201709112    Lenguaje formales y de programación   Sección: C+"
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        Dim texto As String = "Nombre: Camilo Enrique Roncal Pineda\nCarné: 201709112\nLenguaje formales y de programación\nSección: C+"
+=======
+        Dim texto As String = "Nombre: Camilo Enrique Roncal Pineda" + "\r" + "Carné: 201709112/tLenguaje formales y de programación/rSección: C+"
+>>>>>>> a4274995786d757119521c6f5c68df7de6b6cede
+=======
+        Dim texto As String = "Nombre: Camilo Enrique Roncal Pineda" + "\r" + "Carné: 201709112/tLenguaje formales y de programación/rSección: C+"
+>>>>>>> a4274995786d757119521c6f5c68df7de6b6cede
+>>>>>>> 6674afb959f78f469c15b731eb51c1430fd46c26
         MessageBox.Show(texto, "Acerca de:", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 End Class
