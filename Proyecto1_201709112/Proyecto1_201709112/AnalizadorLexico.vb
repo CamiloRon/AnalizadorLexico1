@@ -40,8 +40,7 @@ Public Class AnalizadorLexico
             estado = 1
             auxLex += c
         ElseIf (c = "#" Or c = "[" Or c = "]" Or c = "{" Or c = "}" Or c = ";" Or c = "+" Or c = "-" Or c = ":") Then
-            estado = 2
-            auxLex += c
+            estado2(c)
         ElseIf (c <> " ") Then
             auxLex += c
             tokenError(Token.Tipo.TIPO_ERROR)
@@ -53,15 +52,18 @@ Public Class AnalizadorLexico
     End Sub
 
     Private Sub estado2(ByVal c As Char)
-
+        Select Case c
+            Case "#"
+                addToken(Tipo.SIGNO_NUMERAL)
+        End Select
     End Sub
 
     Private Sub tokenError(ByVal tipo As Tipo)
-        errores.Add(New Token(tipo, auxLex))
+        errores.Add(New Token(tipo, auxLex, fila, i + 1))
     End Sub
 
     Private Sub addToken(ByVal tipo As Tipo)
-        lista.Add(New Token(tipo, auxLex))
+        lista.Add(New Token(tipo, auxLex, fila, i + 1))
         auxLex = ""
         estado = 0
     End Sub

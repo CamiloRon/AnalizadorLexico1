@@ -17,7 +17,7 @@
     End Enum
     Private tipoToken As Tipo
     Private valor, fila, columna As String
-    Public Sub New(ByVal tipo As Tipo, ByVal auxLex As String, ByVal filas As String, ByVal columnas As String)
+    Public Sub New(ByVal tipo As Tipo, ByVal auxLex As String, ByVal filas As Integer, ByVal columnas As Integer)
         Me.tipoToken = tipo
         Me.valor = auxLex
         Me.fila = filas
