@@ -1,6 +1,6 @@
 ﻿Public Class Token
     Enum Tipo
-        LETRA
+        PALABRA
         NUMERO_ENTERO
         SIGNO_IGUAL
         SIGNO_MAYORQ
@@ -16,10 +16,12 @@
         TIPO_ERROR
     End Enum
     Private tipoToken As Tipo
-    Private valor As String
-    Public Sub New(ByVal tipo As Tipo, ByVal auxLex As String)
+    Private valor, fila, columna As String
+    Public Sub New(ByVal tipo As Tipo, ByVal auxLex As String, ByVal filas As String, ByVal columnas As String)
         Me.tipoToken = tipo
         Me.valor = auxLex
+        Me.fila = filas
+        Me.columna = columnas
     End Sub
     Public Function getTipo() As Tipo
         Return tipoToken
@@ -31,7 +33,7 @@
         Select Case tipoToken
             Case Tipo.NUMERO_ENTERO
                 Return "NumeroEntero "
-            Case Tipo.LETRA
+            Case Tipo.PALABRA
                 Return "Letra"
             Case Tipo.SIGNO_IGUAL
                 Return "Signoigual"
