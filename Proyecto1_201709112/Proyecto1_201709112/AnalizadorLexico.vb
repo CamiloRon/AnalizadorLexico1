@@ -56,7 +56,7 @@ Public Class AnalizadorLexico
     End Sub
 
     Private Sub estado2(ByVal c As Char)
-
+        auxLex += c
         Select Case c
             Case "#"
                 addToken(Tipo.SIGNO_NUMERAL)

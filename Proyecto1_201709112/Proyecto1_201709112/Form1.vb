@@ -69,6 +69,7 @@
             ImprimirErrores()
         Else
             ImprimirTokens()
+            Dim analizador As AnalizadorBloques = New AnalizadorBloques(lTokens)
         End If
     End Sub
 

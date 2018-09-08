@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+# Visual Studio Express 15 for Windows Desktop
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Proyecto1_201709112", "Proyecto1_201709112\Proyecto1_201709112.vbproj", "{1242FBE0-210A-4E71-A789-D32F7E04209C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CE3F96E3-F339-4CC0-B404-93341352E912}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
