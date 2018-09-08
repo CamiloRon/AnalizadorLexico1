@@ -133,7 +133,11 @@ Public Class Form1
 
     Private Sub AcercaDeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AcercaDeToolStripMenuItem.Click
 <<<<<<< HEAD
+<<<<<<< HEAD
         Dim texto As String = "Nombre: Camilo Enrique Roncal Pineda\nCarné: 201709112\nLenguaje formales y de programación\nSección: C+"
+=======
+        Dim texto As String = "Nombre: Camilo Enrique Roncal Pineda" + "\r" + "Carné: 201709112/tLenguaje formales y de programación/rSección: C+"
+>>>>>>> a4274995786d757119521c6f5c68df7de6b6cede
 =======
         Dim texto As String = "Nombre: Camilo Enrique Roncal Pineda" + "\r" + "Carné: 201709112/tLenguaje formales y de programación/rSección: C+"
 >>>>>>> a4274995786d757119521c6f5c68df7de6b6cede
