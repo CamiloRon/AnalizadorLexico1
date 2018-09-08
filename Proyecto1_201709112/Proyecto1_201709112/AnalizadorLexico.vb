@@ -8,7 +8,7 @@ Public Class AnalizadorLexico
     Private i, fila, columna As Integer
     Private c As Char
     Private lineas() As String
-    Private palabrasClave As String = New String("clase", "nombre")
+    Private palabrasClave As String = New String("clase", "nombre", "atributos", "metodos", "asociacion")
 
     Public Function escanear(ByVal entrada As String()) As List(Of Token)
         Me.lineas = entrada
