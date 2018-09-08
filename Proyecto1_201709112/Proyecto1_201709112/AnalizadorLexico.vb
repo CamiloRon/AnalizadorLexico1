@@ -3,69 +3,55 @@ Public Class AnalizadorLexico
     Private lista As List(Of Token)
     Private estado As Integer
     Private auxLex As String
+    Private entrada As String
+    Private i As Integer
+    Private c As Char
+    Private lineas() As String
 
-    Public Function escanear(ByVal entrada As String) As List(Of Token)
-        entrada = entrada + "~"
+    Public Function escanear(ByVal entrada As String()) As List(Of Token)
+        Me.lineas = entrada
+        Console.WriteLine(lineas.Length)
         lista = New List(Of Token)
-
-        auxLex = ""
-        Dim c As Char
-
-        For i As Integer = 0 To entrada.Length - 1 Step 1
-            c = entrada.Chars(i)
-
-            If Char.IsLetter(c) Then
-                auxLex += c
-
-            ElseIf Char.IsDigit(c) Then
-                auxLex += c
-            ElseIf (c = "=") Then
-                auxLex += c
-                addToken(Tipo.SIGNO_IGUAL)
-            ElseIf (c = ">") Then
-                auxLex += c
-                addToken(Tipo.SIGNO_MAYORQ)
-            ElseIf (c = "<") Then
-                auxLex += c
-                addToken(Tipo.SIGNO_MENORQ)
-            ElseIf (c = ":") Then
-                auxLex += c
-                addToken(Tipo.SIGNO_DOSPUNTOS)
-            ElseIf (c = ";") Then
-                auxLex += c
-                addToken(Tipo.SIGNO_PUNTOYCOMA)
-            ElseIf (c = "[") Then
-                auxLex += c
-                addToken(Tipo.CORCHETE_IZQ)
-            ElseIf (c = "]") Then
-                auxLex += c
-                addToken(Tipo.CORCHETE_DER)
-            ElseIf (c = "{") Then
-                auxLex += c
-                addToken(Tipo.LLAVE_IZQ)
-            ElseIf (c = "}") Then
-                auxLex += c
-                addToken(Tipo.LLAVE_DER)
-            ElseIf (c = "#") Then
-                auxLex += c
-                addToken(Tipo.SIGNO_NUMERAL)
-            ElseIf (Char.IsSymbol(c) Or c = " ") Then
-                addToken(Tipo.LETRA)
-                i -= 1
-            Else
-                If (c = "~" And i = entrada.Length() - 1) Then
-                    Console.WriteLine("Hemos concluido el análisis léxico satisfactoriamente")
-                Else
-                    Console.WriteLine("Error léxico con: " + c)
-
-                End If
-            End If
-
-
-
+        For Each texto As String In lineas
+            For i = 0 To texto.Length - 1
+                c = texto.Chars(i)
+                Select Case estado
+                    Case 0
+                        estado0(c)
+                    Case 1
+                        estado1(c)
+                    Case 2
+                        estado2(c)
+                End Select
+            Next
+            auxLex = ""
         Next
         Return lista
     End Function
+
+    Public Function leerToken() As Char
+        c = entrada.Chars(i)
+    End Function
+
+    Private Sub estado0(ByVal c As Char)
+        If (Char.IsLetterOrDigit(c)) Then
+            estado = 1
+            auxLex += c
+        ElseIf (c = "#" Or c = "[" Or c = "]" Or c = "{" Or c = "}" Or c = ";" Or c = "+" Or c = "-" Or c = ":") Then
+            estado = 2
+            auxLex += c
+        ElseIf ((c & entrada.Chars(i)) = "\n") Then
+            Console.WriteLine(entrada.Chars(i + 1).GetTypeCode())
+        End If
+    End Sub
+
+    Private Sub estado1(ByVal c As Char)
+
+    End Sub
+
+    Private Sub estado2(ByVal c As Char)
+
+    End Sub
 
     Private Sub addToken(ByVal tipo As Tipo)
         lista.Add(New Token(tipo, auxLex))
