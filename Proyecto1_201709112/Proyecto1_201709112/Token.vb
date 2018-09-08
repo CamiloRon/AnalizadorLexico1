@@ -1,6 +1,6 @@
 ﻿Public Class Token
     Enum Tipo
-        LETRA
+        PALABRA
         NUMERO_ENTERO
         SIGNO_IGUAL
         SIGNO_MAYORQ
@@ -32,7 +32,7 @@
         Select Case tipoToken
             Case Tipo.NUMERO_ENTERO
                 Return "NumeroEntero "
-            Case Tipo.LETRA
+            Case Tipo.PALABRA
                 Return "Letra"
             Case Tipo.SIGNO_IGUAL
                 Return "Signoigual"
