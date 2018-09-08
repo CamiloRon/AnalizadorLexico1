@@ -66,7 +66,7 @@
 
 
         Dim lex As AnalizadorLexico = New AnalizadorLexico()
-        Dim lTokens As List(Of Token) = lex.escanear(entrada)
+        Dim lTokens As List(Of Token) = lex.escanear(Me.RichTextBox1.Lines)
         lex.imprimirLista(lTokens)
     End Sub
 End Class
