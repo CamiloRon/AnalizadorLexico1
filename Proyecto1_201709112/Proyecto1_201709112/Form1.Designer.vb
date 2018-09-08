@@ -124,7 +124,7 @@ Partial Class Form1
         'AcercaDeToolStripMenuItem
         '
         Me.AcercaDeToolStripMenuItem.Name = "AcercaDeToolStripMenuItem"
-        Me.AcercaDeToolStripMenuItem.Size = New System.Drawing.Size(150, 26)
+        Me.AcercaDeToolStripMenuItem.Size = New System.Drawing.Size(216, 26)
         Me.AcercaDeToolStripMenuItem.Text = "Acerca de"
         '
         'ContextMenuStrip1
