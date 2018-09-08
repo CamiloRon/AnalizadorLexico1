@@ -15,10 +15,12 @@
         PALABRA_RESERVADA
     End Enum
     Private tipoToken As Tipo
-    Private valor As String
-    Public Sub New(ByVal tipo As Tipo, ByVal auxLex As String)
+    Private valor, fila, columna As String
+    Public Sub New(ByVal tipo As Tipo, ByVal auxLex As String, ByVal filas As String, ByVal columnas As String)
         Me.tipoToken = tipo
         Me.valor = auxLex
+        Me.fila = filas
+        Me.columna = columnas
     End Sub
     Public Function getTipo() As Tipo
         Return tipoToken
