@@ -20,7 +20,7 @@
                     If (lista(3).getValor().Equals("{")) Then
                         If (lista(4).getValor().Equals("[")) Then
                             If (lista(5).getValor().ToLower().Equals("atributo")) Then
-                                AnalizarBloqueAtributo(lista.Skip(5))
+                                AnalizarBloqueAtributo()
                             ElseIf (lista(5).getValor().ToLower().Equals("metodo")) Then
                                 Console.WriteLine(lista.Count)
                                 AnalizarBloqueMetodo(lista.Skip(5))
