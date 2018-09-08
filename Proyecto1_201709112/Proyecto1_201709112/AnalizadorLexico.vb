@@ -56,7 +56,12 @@ Public Class AnalizadorLexico
         If (Char.IsLetterOrDigit(c)) Then
             auxLex += c
         Else
+            Dim reservada As Boolean = False
+            For Each texto As String In palabrasClave
+                If auxLex.ToLower().Equals(texto) Then
 
+                End If
+            Next
             addToken(Token.Tipo.PALABRA)
             i -= 1
         End If
